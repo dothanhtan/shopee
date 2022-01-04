@@ -1,0 +1,232 @@
+:root {
+    --primary-color: #ee4d2d;
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --border-color: #dbdbdb;
+
+    --header-height: 120px;
+    --header-navbar-height: 36px;
+    --header-sortbar-height: 45px;
+    --header-toolbar-height: calc(var(--header-height) - var(--header-navbar-height));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    line-height: 1.6rem;
+}
+
+.grid__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+}
+
+.grid__col {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.grid__col-2 {
+    width: 16.66667%;
+}
+
+.grid__col-2-4 {
+    width: 20%;
+}
+
+.grid__col-10 {
+    width: 83.33333%;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    animation: fadeIn linear 0.3s;
+    visibility: hidden;
+    opacity: 0;
+    transition: all ease-in 0.3s;
+}
+
+.modal:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal__body {
+    --growth-from: 0;
+    --growth-to: 1;
+    position: relative;
+    margin: auto;
+    animation: growth linear 0.3s;
+}
+
+.btn {
+    min-width: 12.4rem;
+    height: 3.4rem;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    border-radius: 0.2rem;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    background-color: var(--white-color);
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 3.4rem;
+    padding: 0 1.2rem;
+}
+
+.btn--back {
+    margin-right: 0.8rem;
+}
+
+.btn.btn--primary {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+.btn.btn--default:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.btn.btn--disabled {
+    cursor: default;
+    color: #949494;
+    background-color: #c3c3c3;
+}
+
+.select-input {
+    min-width: 20rem;
+    height: 34px;
+    background-color: var(--white-color);
+    padding: 0 12px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.select-input__label {
+    font-size: 1.4rem;
+}
+
+.select-input__icon {
+    font-size: 1.4rem;
+    color: rgb(131, 131, 131);
+}
+
+.select-input:hover .select-input__list {
+    display: block;
+}
+
+.select-input__list {
+    list-style: none;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 1;
+    top: calc(100% + 3px);
+    left: 0;
+    right: 0;
+    background-color: var(--white-color);
+    padding: 8px 0;
+    display: none;
+}
+
+.select-input__list::before {
+    content: "";
+    position: absolute;
+    top: -1rem;
+    display: block;
+    width: 100%;
+    height: 2rem;
+}
+
+.select-input__item {
+    padding: 4px 12px;
+}
+
+.select-input__link {
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    display: block;
+}
+
+.select-input__link:hover {
+    color: var(--primary-color);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.pagination-item {
+    margin: 0 12px;
+}
+
+.pagination-link {
+    --height: 30px;
+    display: block;
+    text-decoration: none;
+    color: #939393;
+    font-size: 2rem;
+    min-width: 40px;
+    height: var(--height);
+    line-height: var(--height);
+    text-align: center;
+    border-radius: 2px;
+}
+
+.pagination-item--active .pagination-link {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.pagination-item--active .pagination-link:hover {
+    background-color: #f57359;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes growth {
+    from {
+        transform: scale(var(--growth-from));
+    }
+    to {
+        transform: scale(var(--growth-to));
+    }
+}
